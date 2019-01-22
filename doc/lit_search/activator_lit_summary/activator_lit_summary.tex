@@ -1,0 +1,393 @@
+\documentclass[12pt]{article}
+% Header and Footer with logo
+% \usepackage{lastpage,fancyhdr,graphicx}
+% \pagestyle{myheadings}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{color} % ULTIMATELY delete since I can't have colored text???\
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\NBComment}[1]{\textcolor{purple}{(NB:~#1)}}
+
+\begin{document}
+
+\section*{Simple activation project}
+
+One of the goals of this work will be to replicate the rigour that has
+been applied to simple repression, to the  case of \textit{simple activation} -
+ultimately, to test out our statistical thermodynamic model for such
+architectures. In analogy to our work with the repressor LacI in the
+\textit{simple repression} architecture, we are in search of an activator
+transcription factor that binds to one (or few) binding sites. The canonical
+version of an activator in \textit{E. coli}, CRP, for which much of our
+understanding of activation is based, is not at all ideal for this work since it
+binds to over 200 binding sites across the genome.
+In this
+document we by summarizing the characterized regulatory details of several candidate
+activators. From there we provide a preliminary outline of our experimental strategy.
+
+Using annotated activator binding sites on RegulonDB, the
+proteomic consensus study of the \textit{E. coli} proteome we then narrow  the
+number of candidate activator transcription factors. Through a preliminary
+literature search, we summarize relavent details about each of these candidates.
+
+\subsection*{Identification of candidate activator}
+
+To identify candidate activators, we began with the annotated binding sites on RegulonDB
+and identified activators that bind to either one, two, or three annotated
+target binding sites (i.e. a low number that may allow us to delete them from
+the chromosome and create synthetic versions like was done with LacI). These are
+summarized in the two tables at the end of the document. Since we want would
+also like to demonstrate allosteric control, we then used the proteomic dataset
+which provides a protein census across 22 growth conditions to identify those
+activators with a potential allosteric ligand. Among those candidate activators
+identified on RegulonDB, only a small number showed differential expression in a
+particular growth condition in the protein census study. These include the
+activators BtsR (activates yjiY), IlvY (activates IivC),  AsnC (activates asnA),
+and IdnR (activates idnK) and are summarized in Table 1. Many of the others appear to be dependent on the
+phosphorylated state of the activator or are potentially co-activated by CRP,
+and I have avoided these.
+\newpage
+
+{\footnotesize
+\begin{longtable}[c]{|l|l|l|l|l|}
+  \toprule
+     \textbf{TF} & \textbf{operon} & \textbf{low copy number} & \textbf{high copy number} & \textbf{Growth condition (high copy number)} \\
+  \hline
+   BtsS &                  BtsR &          ~10 &            ~1000 &                minimal media + pyruvate \\
+   IlvY &                  IlvC &          ~3000 &          ~30,000 &              minimal media (all carbon sources) \\
+   AsnC &                  asnA &          ~100 - 2000 &     ~28,000 &             minimal media + glycerol + amino acids \\
+   IdnR &                 idnK &           ~10 &   ~1700 &              minimal media + glucosamine \\
+    \bottomrule
+\caption{Summary of activators listed on regulonDB that 'activate' 1-3 operons and show
+differential expression in Schmidt et al. 2016. Copy numbers reflect the copy number per cell.}
+\end{longtable}}
+
+It is interesting to note that in going through most of the candidates identified on RegulonDB,
+it was common to find that CRP was also annotated to activate many of them. For such
+cases, a worry is that CRP is also necessary to co-activate the promoter. For
+example, the activator IdnR was found to activate the \textit{idnK} promoter
+more than 100-fold when cells are grown with glucosamine; which is used for
+metabolism of this carbon source. However, this activation appears to be through
+co-activation with CRP, and cells do not grow in a CRP deletion strain
+if  glucosamine is the sole carbon source.
+
+Next we consider several of the candidate activator/promoters identified in Table 1
+as well as the activator XapR, which activates xapAB. While this addition activator
+was not differentially expressed in the Schmidt et al. data, it is likely that the
+appropriate growth condition was not considered.
+
+\subsubsection*{XapR activates xapAB}
+
+The genes \textit{xapA} and \textit{xapB} appear to be involved in uptake of the
+purine molecule xanthosine as part of a salvage pathway. Specifically,
+\textit{xapA} is one of two enzymes that cleave xanthosine (and inosine and
+guanosine) into $\alpha$-(deoxy)ribose1-phosphate and the free purine base. The
+base can be used as precursors in the synthesis of nucleotides as part of the
+purine salvage pathways or alternatively as a nitrogen source. The gene
+\textit{xapB} codes for a xanthosine:H+ symporter pump that helps uptake
+xanthosine.
+
+Figure~\ref{xapR}A shows the promoter details noted on RegulonDB and EcoCyc.
+While the level of regulatory characterization is limited (Seeger et al. 1995, Jrgensen et
+al. 1999), it is suggested that there are two binding sites for the activator
+XapR, which are upstream of the predicted RNAP binding site. The activator is sensitive to
+the small molecule xanthosine (Figure~\ref{xapR}B), which provides co-activation
+ (Deoxyinosine has also be shown to induce XapR activity).
+
+One appealing aspect for this candidate is that it appears that the gene products
+are somewhat isolated in their pyhsiological role and do not appear critical to
+the cell, or as part of a complex pathway (see Figure~\ref{xapR}C). If xanthosine can
+enter the cell without the XapB pump, it may be reasonable to delete the native
+\textit{xapA}, \textit{xapB}, and \textit{xapR} genes and create our own
+synthetic variants.
+
+\begin{figure}[ht!]
+ \centering
+ \makebox[\textwidth][c]{\includegraphics[scale=0.6]{xapAB.pdf}}
+ \caption{
+       \textbf{Summary of xapAB/xapR} (A) Promoter data from RegulonDB and EcoCyc. (B) Allosteric
+       effector molecule for XapR is xanthosine. (C) Xanthosine salvage pathway in \textit{E. coli} (\textit{xapA} and \textit{xapB}
+       outlined in red).}
+ \label{xapR}
+\end{figure}
+
+\subsubsection*{References} \\
+
+\noindent Seeger, C., Poulsen, C., & Dandanell, G. (1995). Identification and
+characterization of genes (xapA, xapB, and xapR) involved in xanthosine
+catabolism in Escherichia coli. Journal of Bacteriology, 177(19), 5506–5516.\\
+
+\noindent Jørgensen, C., Bacteriology, G. D. J. O., (1999). Isolation and
+Characterization of Mutations in theEscherichia coli Regulatory Protein XapR. Am
+Soc Microbiol.
+
+\subsubsection*{ IlvY activates ilvC}
+
+The next activator considered is IlvY, which activates the \textit{ilvC} gene. IlvC
+carries out two analogous reactions in the parallel biosynthetic pathways for
+the amino acids isoleucine and valine.  The small molecules
+$\alpha$-acetolactate and $\alpha$-acetohydoxybutyrate appear to be the
+allosteric regulators of the IlvY activator ($\alpha$-acetolactate shown in Figure \ref{ilvY}B).
+
+Figure \ref{ilvY}A shows the characterized regulatory architecture for the \textit{ilvC}
+promoter, which contains two annotated binding sites for IlvY. Note that binding
+by IlvY also provides autoregulation of itself (which transcribes in the
+opposite direction). Data from Rhee et al. show some encouraging results: In
+Figure \ref{ilvY}C they look at binding of IlvY to the DNA for the native O1-O2
+sequence, or when only the O1 sequence is present. In both cases they find a
+sigmoidal increase in the occupancy of IlvY. For our purposes, it may be ideal
+to start with a promoter containing a single binding site. Importantly, they
+were able to show that activation from the \textit{ilvC} promoter was dependent on the
+concentration of inducer (Figure \ref{ilvY}D; performed \textit{in vitro} with
+$\alpha$-acetohydroxybutyrate). The proposed mechanism is a conformational
+change in the structure of the protein–DNA complex that is correlated with the
+relief of an IlvY protein-induced DNA bend that helps remodel the  35 region of
+the ilvC promoter. This appears to increases RNA polymerase binding nearly
+100-fold (noted on EcoCyc).
+
+
+\begin{figure}[ht!]
+ \centering
+ \makebox[\textwidth][c]{\includegraphics[scale=0.55]{ilvY.pdf}}
+ \caption{\textbf{Summary of ilvC/ilvY} (A) Promoter data from RegulonDB and Rhee et al. 1998. (B) Allosteric
+ effector molecules for IlvY are $\alpha$-acetolactate and
+ $\alpha$-acetohydoxybutyrate ($\alpha$-acetolactate shown). (C) Experimental data from
+ Rhee et al. 1998. Left: the activator is titrated and the fraction of bound DNA containing either
+ both O1-O2 binding sites, or just the O1 binding sites are measured. Right: the inducer
+ $\alpha$-acetohydroxybutyrate is titrated and activation was assessed \textit{in vivo} as a
+ function of the inducer concentration.}
+ \label{ilvY}
+\end{figure}
+
+In order to provide tunable allosteric control of the IlvY activator, we would
+likely need to delete the enzymes that utilize and control the cellular
+concentration of (S)-2-acetolactate (pathway shown in Figure~\ref{ilvY_2}). In
+particular, this includes the the enzyme that generates it (\textit{ilvN}) and the enzyme
+that consumes it (\textit{ilvC}). One caveat for this candidate is that
+$\alpha$-acetolactate and  $\alpha$-acetohydoxybutyrate do not appear to be
+easily purchased.
+
+\begin{figure}[ht!]
+ \centering
+ \makebox[\textwidth][c]{\includegraphics[scale=0.6]{ilvY_2.pdf}}
+ \caption{
+       \textbf{Summary of valine synthesis pathway} (A) Valine biosyhnthesis pathway (from EcoCyc) is shown.
+       The red box identifies where $\alpha$-acetolactate is produced/consumed. Note that ilvC
+       is the enzyme that consumes the inducer.}
+ \label{ilvY_2}
+\end{figure}
+\\
+
+\subsubsection*{References}
+
+\noindent Rhee, K. Y., Opel, M., Ito, E., Hung, S. P., Arfin, S. M., & Hatfield, G. W.
+(1999). Transcriptional coupling between the divergent promoters of a prototypic
+LysR-type regulatory system, the ilvYC operon of Escherichia coli. Proceedings
+of the National Academy of Sciences of the United States of America, 96(25),
+14294–14299. \\
+
+\noindent Rhee, K. Y., Senear, D. F., & Hatfield, G. W. (1998). Activation of Gene
+Expression by a Ligand-induced Conformational Change of a Protein-DNA Complex.
+The Journal of Biological Chemistry, 273(18), 11257–11266.
+
+\newpage
+\subsubsection*{AsnC activates asnA}
+
+The last activator considered is AsnC, which activates expression of asparagine
+synthetase A (AsnA). AsnA is one of two asparagine synthetases in \textit{E. coli} and
+catalyzes the ammonia-dependent conversion of aspartate to asparagine. AsnC
+itself appears to bind allosterically with asparagine (Figure~\ref{AsnA}B),
+which reduces activation. Figure~\ref{AsnA}A shows the promoter region for AsnC,
+which contains four binding sites for AsnA. Interestingly, AsnA is predicted to
+form an octamer that may bind all four of these sites, or multiple octamers may
+bind the DNA in a nucleosome-like structure (Figure~\ref{AsnA}C,D). Given the
+potential complexity of the AsnA-DNA binding interaction, and necessity of
+asparagine for protein synthesis, this may not a good candidate to
+consider.
+
+\begin{figure}[ht!]
+ \centering
+ \makebox[\textwidth][c]{\includegraphics[scale=0.6]{asnC.pdf}}
+ \caption{
+       \textbf{Summary of AsnA/AsnC} (A) Promoter data from RegulonDB and EcoCyc. (B) Allosteric
+       effector molecule for AsnC is asparagine. (C) Experimental \textit{in vitro} data from
+       Kolling et al. 1985 showing that the \textit{asnA} promoter is sensitive to asparagine, while
+       the \textit{asnC} promoter itself is not (using promoter-galK fusions).}
+ \label{AsnA}
+\end{figure}
+\\
+
+\subsubsection*{References} \\
+
+\noindent Kölling, R., bacteriology, H. L. J. O. (1985). AsnC: an autogenously regulated
+activator of asparagine synthetase A transcription in Escherichia coli. Am Soc
+Microbiol.\\
+
+\noindent Thaw, P., Sedelnikova, S. E., Muranova, T., Wiese, S., Ayora, S., Alonso, J. C.,
+et al. (2006). Structural insight into gene transcriptional regulation and
+effector binding by the Lrp/AsnC family. Nucleic Acids Research, 34(5),
+1439–1449.
+
+
+\subsection*{General outline of experimental approach}
+
+Next we begin by outlining the proposed approach to quantitatively dissect a
+simple activation architecture. This work will require control over activator
+copy number, DNA binding sequence/strength, and hopefully, allosteric control of
+the transcription factor through titration of a relavent effector ligand. The
+major steps expected include (A) cloning work to create synthetic constructs
+and preliminary testing of candidate activators, (B) characterization of
+activator achitecture through careful control of activator copy number and
+possibly the activator binding site sequence (no allosteric control),  and (C)
+characterization of allosteric control and ligand titration.
+
+In order to control copy number, we plan to use the same approach as Brewster
+and Weinert, which counts the protein copy number through binomial partitioning
+with a transcription factor-mCherry fusion protein. Griffin has the experimental
+and analytical pipeline up in running. One concern for the case of an activator
+is that the fusion protein may abolish or harm the native activation mechanism
+\NBComment{Do others see this as a concern?; if it still activates, maybe it
+doesn't have to to work exactly like native activator}. In order to  get around
+this we propose to express the activator-mCherry using a linker sequence that
+can be cleaved \textit{in vivo}. In theory, since the activator and mCherry
+proteins are produced at a strict 1:1 stiochiometry,  this approach would allow us to
+count the copy number by fluorescence and allow the activator to be in its
+natural form. To achieve this we would express a non-native protease that targets
+a roughly 10 amino acid linker sequence (Volkmann et al. 2012). This has been shown to work in
+\textit{E. coli}, though not for identical purposes as ours.
+
+%
+% A) CLONING: Construct synthetic circuit to ‘dissect’ activation details.
+% - Need to delete genes and promoters from genome
+% - Integrate TF-fusion into ybcN locus, and reporter with activator binding site into galK locus.
+%
+% B) Measure gene output as function of TF concentration
+%
+% Note that Justin is currently taking an approach where he does careful measurements for expression for CRP DNA binding mutants, and we could consider this as well - in particular, it is a useful way to measure binding interaction.
+%
+% C) Measure gene output as a function of inducer concentration
+%
+% Big concerns:
+%
+% 1. Are there pumps present that may ruin us?
+% 2. How difficult will it be to get a protocol working where the mCherry fusion is clipped off of the TF?
+
+
+While the focus of this project will be directed toward the quantitative
+dissection of a simple activation motif, some synergy could be made with the
+Sort-Seq effort. For example, we could also demonstrate a more complete
+characterization of the related promoter under study by applying Sort-Seq to it.
+In this way, one hope would be that we could then relate our synthetic
+constructs to their native constructs.
+
+\subsubsection*{References} \\
+
+\noindent Volkmann, G., Volkmann, V., & Liu, X.-Q. (2012). Site‐specific protein cleavage
+in vivo by an intein‐derived protease. FEBS Letters, 586(1), 79–84.
+
+
+\newpage
+
+
+{\footnotesize
+\begin{longtable}[c]{lllll}
+  \toprule
+     \textbf{TF} &                  \textbf{operon} & \textbf{reg\_effect} &                 \textbf{evidence} & \textbf{evidence\_confidence} \\
+  \midrule
+   AllS &                  allDCE &          + &            [BCE, HIBSCS] &                Weak \\
+   AtoC &                 atoDAEB &          + &   [BPP, GEA, HIBSCS, SM] &              Strong \\
+   GutM &  srlAEBD-gutM-srlR-gutQ &          + &                    [GEA] &                Weak \\
+   HyfR &     hyfABCDEFGHIJR-focB &          + &            [AIBSCS, GEA] &                Weak \\
+   KdpE &                 kdpFABC &          + &   [BPP, GEA, HIBSCS, SM] &              Strong \\
+   MhpR &               mhpABCDFE &          + &   [BCE, GEA, HIBSCS, SM] &                Weak \\
+   PdeL &                    pdeL &          + &        [BPP, GEA, IHBCE] &              Strong \\
+   RclR &                  rclABC &          + &               [BPP, GEA] &              Strong \\
+   RhaR &                   rhaSR &          + &  [BCE, BPP, GEA, HIBSCS] &                Weak \\
+   RtcR &                   rtcBA &          + &                    [GEA] &                Weak \\
+   SlyA &                    hlyE &          + &               [BPP, GEA] &              Strong \\
+   TdcA &              tdcABCDEFG &          + &           [BCE, GEA, SM] &                Weak \\
+   TdcR &              tdcABCDEFG &          + &                [BCE, SM] &                Weak \\
+   UhpA &                    uhpT &          + &      [BCE, BPP, GEA, SM] &                Weak \\
+   XapR &                   xapAB &          + &            [GEA, HIBSCS] &                Weak \\
+   YehT &                    yjiY &          + &           [BPP, GEA, SM] &              Strong \\
+   YeiL &                    yeiL &          + &                    [GEA] &                Weak \\
+   YpdB &                    yhjX &          + &                [BPP, SM] &              Strong \\
+   YqhC &               yqhD-dkgA &          + &           [BPP, GEA, SM] &              Strong \\
+   ZntR &                    zntA &          + &                [BPP, SM] &              Strong \\
+  \bottomrule
+\caption{Summary of activators listed on regulonDB that 'activate' one operon.}
+\end{longtable}}
+
+
+{\footnotesize
+\begin{longtable}[c]{lllll}
+\toprule
+   \textbf{TF} &         \textbf{operon} & \textbf{reg\_effect} &                        \textbf{evidence} & \textbf{evidence\_confidence} \\
+\midrule
+ AppY &        appCBXA &          + &                           [GEA] &                Weak \\
+ AppY &      hyaABCDEF &          + &                           [GEA] &                Weak \\
+ AsnC &           asnA &          + &                           [GEA] &                Weak \\
+ BaeR &           acrD &          + &                  [BPP, GEA, IC] &              Strong \\
+ BaeR &  mdtABCD-baeSR &          + &              [AIBSCS, BPP, GEA] &                Weak \\
+ BaeR &            spy &          + &  [AIBSCS, BPP, GEA, HIBSCS, IC] &                Weak \\
+ CadC &          cadBA &          + &                      [BPP, GEA] &              Strong \\
+ CadC &           cadC &          + &                           [GEA] &                Weak \\
+ CaiF &      caiTABCDE &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+ CaiF &        fixABCX &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+  Cbl &       ssuEADCB &          + &                      [BPP, GEA] &              Strong \\
+  Cbl &        tauABCD &          + &                      [BPP, GEA] &              Strong \\
+ ChbR &      chbBCARFG &          + &                      [BPP, GEA] &              Strong \\
+ CreB &        creABCD &          + &              [AIBSCS, BPP, GEA] &                Weak \\
+ CreB &      talA-tktB &          + &                   [AIBSCS, GEA] &                Weak \\
+ CspA &           gyrA &          + &                        [HIBSCS] &                Weak \\
+ CspA &            hns &          + &                           [BPP] &              Strong \\
+ CueR &           copA &          + &               [BPP, HIBSCS, SM] &              Strong \\
+ CueR &           cueO &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+ CynR &         cynTSX &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+  Dan &         ttdABT &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+  Dan &           ttdR &          + &                           [BPP] &              Strong \\
+ DhaR &         dhaKLM &          + &                           [GEA] &                Weak \\
+ DsdC &          dsdXA &          + &                           [GEA] &                Weak \\
+ EnvY &           ompC &          + &                           [IMP] &                Weak \\
+ EnvY &           ompF &          + &                           [IMP] &                Weak \\
+ FeaR &           feaB &          + &          [BPP, GEA, HIBSCS, SM] &              Strong \\
+ FeaR &           tynA &          + &          [BPP, GEA, HIBSCS, SM] &              Strong \\
+ FucR &          fucAO &          + &                      [GEA, IMP] &                Weak \\
+ FucR &       fucPIKUR &          + &                           [GEA] &                Weak \\
+ GlcC &      glcDEFGBA &          + &                  [BCE, GEA, SM] &                Weak \\
+ GlrR &           glmY &          + &          [BPP, GEA, HIBSCS, SM] &              Strong \\
+ GlrR &    rpoE-rseABC &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+ HcaR &       hcaEFCBD &          + &              [AIBSCS, BPP, GEA] &                Weak \\
+ HdfR &         gltBDF &          + &                           [BPP] &              Strong \\
+ IdnR &        idnDOTR &          + &                   [AIBSCS, GEA] &                Weak \\
+ IdnR &           idnK &          + &                   [AIBSCS, GEA] &                Weak \\
+ IlvY &           ilvC &          + &     [BCE, BPP, GEA, HIBSCS, IC] &                Weak \\
+ LldR &         lldPRD &          + &          [AIBSCS, BPP, GEA, SM] &                Weak \\
+ LrhA &           fimE &          + &                      [BPP, GEA] &              Strong \\
+ LrhA &           lrhA &          + &                      [BPP, GEA] &              Strong \\
+ LysR &           lysA &          + &                           [GEA] &                Weak \\
+ McbR &         yciGFE &          + &                      [BPP, GEA] &              Strong \\
+ NorR &          norVW &          + &              [AIBSCS, BPP, GEA] &                Weak \\
+ PrpR &        prpBCDE &          + &                   [GEA, HIBSCS] &                Weak \\
+ PspF &       pspABCDE &          + &                 [BCE, BPP, GEA] &                Weak \\
+ PspF &           pspG &          + &                 [BPP, GEA, ICA] &              Strong \\
+ QseB &          flhDC &          + &                           [GEA] &                Weak \\
+ QseB &          qseBC &          + &                      [BPP, GEA] &              Strong \\
+ RbsR &            add &          + &              [AIBSCS, BPP, GEA] &                Weak \\
+ SgrR &           alaC &          + &               [GEA, HIBSCS, SM] &                Weak \\
+ SgrR &     sgrST-setA &          + &          [BPP, GEA, HIBSCS, SM] &              Strong \\
+ SoxR &          fumAC &          + &                      [BPP, GEA] &              Strong \\
+ SoxR &           soxS &          + &                      [BPP, GEA] &              Strong \\
+ XylR &          xylAB &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+ XylR &        xylFGHR &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+ ZraR &           zraP &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+ ZraR &          zraSR &          + &              [BPP, GEA, HIBSCS] &              Strong \\
+\bottomrule
+\caption{Summary of activators listed on regulonDB that 'activate' two or three operons.}
+\end{longtable}}
+
+
+\end{document}
