@@ -1,0 +1,232 @@
+\documentclass[12pt]{article}%{amsart}
+\usepackage[top = 1.0in, bottom = 1.0in, left = 1.0in, right = 1.0in]{geometry}
+% See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}               % ... or a4paper or a5paper or ...
+%\geometry{landscape}             % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+%\usepackage{epstopdf}
+% \usepackage{caption}
+\usepackage{amsmath}
+% \usepackage{longtable}
+% \usepackage{tabu}
+% \usepackage{accents} %to get undertildes for vec & mat
+\usepackage{color} % for colored text
+% \usepackage[normalem]{ulem} % for editing: striking out text using 'sout' command
+
+% \newcommand\mytablefigwidth{0.35\textwidth}
+
+% allows to use .ai files directly w/o resaving as pdf
+\DeclareGraphicsRule{.ai}{pdf}{.ai}{}
+
+% Handy math macros!
+\newcommand{\tderiv}[1]{\frac{d}{dt}#1}%{\dot{#1}}
+\newcommand{\vect}[1]{\vec{#1}}
+\newcommand{\rowones}{\vect{1}^\dagger}
+\newcommand{\matr}[1]{\mathbf{#1}}
+\newcommand{\moment}[1]{\langle #1 \rangle}
+\newcommand{\vectmoment}[2]{\langle \vect{#1}_{(#2)} \rangle}
+\newcommand{\conc}[1]{c_{#1}}
+\newcommand{\rate}[3]{{#1}_{#2}^{#3}}
+\newcommand{\mmnote}[1]{\textcolor{cyan}{(MM:~#1)}}
+
+%%%%% Referencing macros %%%%%
+\newcommand{\fref}[1]{Figure~\ref{#1}}
+\newcommand{\tref}[1]{Table~\ref{#1}}
+\newcommand{\eref}[1]{Eq.~(\ref{#1})}
+\newcommand{\erngref}[2]{Eq.~(\ref{#1}-\ref{#2})} % Equations
+
+
+
+%%%%%
+\begin{document}
+
+\title{Notes on theoretical model building for \textit{Xap}}
+
+\maketitle
+
+
+\section{A first pass at simple activation model}
+
+The seemingly obvious starter model for our simple activation system is a model with four states, i.e.,
+empty promoter, RNAP bound promoter, activator bound promoter, and finally RNAP and activator both bound.
+An equilibrium version of this was proposed in~\cite{Bintu2005b},
+but if we want to consider observables beyond mean expression levels,
+we need to consider a kinetic/master equation model.
+The most general version of this picture is shown in \fref{fig:4state}.
+(Our attention for now is on promoter states,
+ignoring mRNA production, decay, and MWC parameters for XapR.)
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.55\textwidth]{./simple_act.ai}
+    \end{center}
+    \caption{
+            Promoter states for simple activation, with no assumptions made about rate constants,
+            in particular to and from the doubly bound state versus the singly bound states.
+            }
+    \label{fig:4state}
+\end{figure}
+Even before considering transcription initiation rates, mRNA degradation rates,
+or MWC parameters for XapR, which will collectively add at least five more parameters,
+\fref{fig:4state} has eight model parameters.
+Such a large number will prove difficult, at best, to infer from experiments.
+This parameter proliferation highlights a serious difficulty of such a master equation model,
+relative to the more economical equilibrium models.
+
+We would like to make some assumptions to simplify this situation,
+for which we propose the following:
+\begin{enumerate}
+    \item Set association rates equal for the singly and doubly bound states,
+        i.e., assume $\rate{k}{P}{+} = \rate{\tilde{k}}{P}{+}$ and
+        $\rate{k}{R}{+} = \rate{\tilde{k}}{R}{+}$.
+        If association rates for XapR and RNAP are close to the diffusion limit,
+        as some evidence indicates for other transcription factors (\mmnote{need cite!}),
+        this implies that they bind to their specific target with high probability,
+        once they are in its vicinity.
+        In other words, most of their mean search time (which is 1/(on rate))
+        is spent not in close proximity to their target.
+        So the presence or absence of another molecular player bound at their target site should have little influence;
+        either way they bind quickly, with high probability, upon arrival.
+    \item If XapR and RNAP bind and unbind reversibly,
+        meaning no energy is consumed and no entropy produced,
+        then the cycle condition allows us to eliminate one rate
+        (by expressing it as a simple algebraic function of the others).
+        This condition holds even when (irreversible) transcription initiation is
+        reintroduced.\footnote{This is an example of a more general result \mmnote{cite Hill's little book}.
+        In an arbitrarily complicated diagram at a nonequilibrium steady-state,
+        the product of forward rates around any closed path divided by reverse rates
+        equals exp(free energy change around that path).}
+        Note that which algebraic choices lead to the ``best'' or ``simplest'' model is not always obvious.
+    \item If there is no detectable gene expression in the absence of XapR,
+        as Griffin's preliminary experiments suggest,
+        then we would like to excise the singly-bound RNAP state from the cartoon.
+        Then there are two possible ways to proceed.
+        One is to link the empty and doubly bound states with two effective rates (one each direction).
+        If there is some separation of timescales between RNAP and XapR rates,
+        the error from this approximation should be negligible.
+        \label{item:excise_and_patch_p}
+    \item The second and more drastic option, if no expression is detectable in absence of XapR,
+        is to excise the RNAP bound state \textit{and} the rates leading to and from it.
+        This reduces the cartoon to a three-state chain, topologically the same as our usual Lac cartoon,
+        but with the roles of empty and transcription factor bound states reversed.
+        This reversal is critical: some experiments that were done to infer parameters in Lac
+        become either more difficult or impossible.
+        This model has the same structure and same number of parameters to be fit as in Lac,
+        even when we incorporate MWC model for XapR plus mRNA initiation and degradation rates.
+        But again, the role reveral of empty and transcription factor bound promoter
+        and the reversal of the transcription factor allosteric $\Delta\epsilon$
+        will present extra experimental challenges.
+    \item If on the other hand gene expression \textit{does} prove detectable in the absence of XapR,
+        we cannot remove the RNAP bound state.
+        This situation would reduce the scope for theory to simplify the cartoon,
+        but as compensation it would make possible additional experiments
+        which could independently determine some model parameters.
+    \item The XapR rates in \fref{fig:4state} are implicitly only for the allosterically active state.
+        As with LacI, it seems reasonable to assume that the other allosteric state
+        does not bind specifically to its target binding site
+        (it may bind DNA, but its binding to the target site is no stronger than to background DNA).
+\end{enumerate}
+
+The above list is presented as a buffet,
+from which we may end up sampling all, some, or none of the options.
+
+\subsection{Replacing RNAP singly bound state with effective rates}
+Let us explore option \ref{item:excise_and_patch_p} in more detail.
+First we point out that even for LacUV5, a ``strong'' promoter,
+the weak promoter approximation has proven excellent.
+In equilibrium, weak promoter means $P/K_P \ll 1$, or put differently,
+the occupation probability of the RNAP bound state is small compared to the empty state.
+It is hard to imagine the Xap promoter being stronger than LacUV5,
+and given the low expression seen so far, it could be much weaker.
+Assuming the activator XapR activates as strongly as it appears,
+the doubly bound state should also have a much higher occupation probability.
+Furthermore, we should expect to find a timescale separation
+between the RNAP rates and the XapR rates.
+If both (second order) on rates are on the order of the diffusion limit,
+but the copy number of XapR is small compared to RNAP,
+then the (first order) RNAP on rate should be larger than that for XapR by the same ratio.
+Also, RNAP's binding to its specific sites is generally weaker than
+bacterial transcription factors' specific site binding,
+due to the far larger number of sites RNAP must recognize.
+Essentially then, the singly bound RNAP state adds nothing but baggage to the model.
+The timescale separation allows us to replace the singly bound RNAP site
+with effective rates directly connecting the empty and doubly bound states.
+
+What should be the effective rates? 
+First consider unbinding from the doubly bound state.
+If $\rate{k}{P}{-} \gg \rate{\tilde{k}}{R}{-}, \rate{\tilde{k}}{R}{+}$ as expected,
+then when XapR unbinds from the doubly bound state,
+it will be followed with high probability by RNAP unbinding.
+And the waiting time for RNAP unbinding will be short compared to the time
+that was \textit{already} waited in the doubly bound state for XapR to unbind.
+
+More formally, we can compute the total mean waiting time as
+\begin{align}
+    \frac{1}{\rate{k}{eff}{-}}
+    = \frac{1}{\rate{k}{P}{-}} + \frac{1}{\rate{\tilde{k}}{R}{-}}
+    = \frac{\rate{\tilde{k}}{R}{-} + \rate{k}{P}{-}}
+           {\rate{\tilde{k}}{R}{-}   \rate{k}{P}{-}}
+    = \frac{1}{\rate{\tilde{k}}{R}{-}}
+        \left(
+        \left( 1 + \frac{\rate{\tilde{k}}{R}{-}}{\rate{k}{P}{-}}\right)^{-1}
+        \right)^{-1}.
+\end{align}
+So far this is exact, but using the assumption that
+$\rate{k}{P}{-} \gg \rate{\tilde{k}}{R}{-}$, we have
+\begin{align}
+    \rate{k}{eff}{-}
+    = \rate{\tilde{k}}{R}{-}
+        \left( 1 + \frac{\rate{\tilde{k}}{R}{-}}{\rate{k}{P}{-}}\right)^{-1}
+    \approx \rate{\tilde{k}}{R}{-}
+        \left( 1 - \frac{\rate{\tilde{k}}{R}{-}}{\rate{k}{P}{-}}\right)
+    \approx \rate{\tilde{k}}{R}{-}.
+\end{align}
+
+Now condsider $\rate{k}{eff}{+}$,
+the effective on rate from the empty state to the doubly bound state.
+This is more subtle because now the slow step is second rather than first.
+The intuition is that $\rate{k}{eff}{+}$ should be approximately
+$\rate{\tilde{k}}{R}{+}$, multiplied by a reduction factor which accounts for
+the higher occupation probability of the empty state relative to
+its actual origin point (the RNAP bound state).
+If the separation of timescales is strong,
+this ratio is approximately $\rate{k}{P}{+}/\rate{k}{P}{-}$,
+so $\rate{k}{eff}{+} \approx
+    \rate{\tilde{k}}{R}{+}\times\rate{k}{P}{+}/\rate{k}{P}{-}$.
+\mmnote{I can come back and do this more carefully at some point,
+but this is at the same level of accuracy as saying
+$\rate{k}{eff}{-} \approx \rate{\tilde{k}}{R}{-}$.
+Doing both at least preserves detailed balance so means are unaffected.}
+
+
+
+\appendix
+
+\section{Reference for a simple-minded theorist with poor memory}
+
+\subsection{Strains}
+We have available five strains that are potentially useful/interesting:
+
+1) $\Delta$\textit{XapA,B,R} (all knocked out).
+Recall \textit{XapR} is just a bit downstream from \textit{XapA} \& \textit{B}.
+
+2) Same as 1), but with wild type promoter (of \textit{XapA,B}) driving YFP.
+
+3) wild type system, plus, at a separate locus, wt promoter driving YFP.
+
+4) $\Delta$\textit{XapA,B,R}, YFP controlled by wt promoter,
+\textit{XapR-mCh} under control of TetR (our standard dilution circuit)
+
+5) like 4), except upstream binding site in wt promoter is knocked out.
+This is the simple activation test vehicle.
+
+%%%%%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+
+
+\bibliographystyle{nature}
+% \bibliographystyle{abbrv}
+\bibliography{library}
+
+\end{document}
