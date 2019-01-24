@@ -1,21 +1,37 @@
-##`software_information`
+#`software_information`
 
-Just as knowing what chemicals, instruments, or samples were used, knowing the computing environment used for the analysis is vital to reproducibility. While there are many ways to enumerate the various versions of the software used, you should list here the exact software used including which particular version and other dependencies that are necessary to reproduce your results. An example can be seen below. 
+## Computing Environment(s)
 
+### Local Machine(s)
 
-### Computing Environment
+**``@gchure``**
 
-* **Compiler**: GCC 4.8.2 20140120 (Red Hat 4.8.2-15)
-* **System**: Linux
-* **Release**: 4.4.0-59-generic
-* **Machine**: x86_64
-* **Processor**: x86_64
-* **Cores**: 4
-* **Interpreter**: 64 Bit
+* **compiler**   : ``GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)``
+* **system**     : ``Darwin``
+* **release**    : ``18.2.0``
+* **machine**    : ``x86_64``
+* **processor**  : ``i386``
+* **CPU cores**  : ``4``
+* **interpreter** : ``64bit``
 
+### Delbruck computational environment
+
+* **compiler**   : ``GCC 7.2.0``
+* **system**     : ``Linux``
+* **release**    : ``4.15.0-43-generic``
+* **machine**    : ``x86_64``
+* **processor**  : ``x86_64``
+* **CPU cores**  : ``48``
+* **interpreter** : ``64bit``
 
 ## Required Software
+* ``MATLAB 2017B``
+* ``CPython 3.6.7``
+* ``IPython 7.1.1``
+* ``numpy 1.14.2``
+* ``pandas 0.23.4``
+* ``pystan 2.18.0.0``
+* ``altair 2.2.2``
+* ``bokeh 0.13.0``
+* ``bebi103 0.0.29``
 
-* Python:  v3.7
-* `numpy`: 1.11.2
-* `scipy`: 0.18.1

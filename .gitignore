@@ -54,3 +54,9 @@ __pycache__/
 
 # Also zips. Add manually if you really want, since they won't diff well.
 *.zip
+
+# Ignore altair .json plotting outputs
+*altair*.json
+
+# Ignore segmentation status outfiles
+*seg_status.out*

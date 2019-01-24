@@ -101,3 +101,10 @@ for i, promoter in enumerate(tqdm.tqdm(promoter_dict.keys())):
 snap_df = pd.concat(snap_dfs)
 snap_df.to_csv(f'output/{DATE}_snapshots.csv', index=False)
 
+snap_df
+        
+
+
+
+
+
