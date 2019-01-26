@@ -151,7 +151,19 @@ bacterial transcription factors' specific site binding,
 due to the far larger number of sites RNAP must recognize.
 Essentially then, the singly bound RNAP state adds nothing but baggage to the model.
 The timescale separation allows us to replace the singly bound RNAP site
-with effective rates directly connecting the empty and doubly bound states.
+with effective rates directly connecting the empty and doubly bound states,
+as depicted in 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=0.55\textwidth]{./simple_act_excisedP.ai}
+    \end{center}
+    \caption{
+            Promoter states for simple activation,
+            with RNAP singly bound state removed in favor of effective rates
+            directly connecting empty and doubly-bound promoter states.
+            }
+    \label{fig:3state_loop}
+\end{figure}
 
 What should be the effective rates? 
 First consider unbinding from the doubly bound state.
@@ -199,7 +211,60 @@ but this is at the same level of accuracy as saying
 $\rate{k}{eff}{-} \approx \rate{\tilde{k}}{R}{-}$.
 Doing both at least preserves detailed balance so means are unaffected.}
 
+Put another way, what this construction has done is preserve
+the mean waiting time for transitions between the empty and doubly bound states.
+But now the transition is modeled as a one step process,
+rather than the two step it was in the four state picture of \fref{fig:4state}.
+Note that this does \textit{not} leave $p_{RP}$ exactly unchanged
+\mmnote{as I initially thought it did!},
+only approximately.
+The fractional change in occupation probability of the remaining three states
+is of order $\rate{k}{P}{+}/\rate{k}{P}{-}$,
+which is small compared to 1 to the same degree the weak promoter approximation is true.
+To see this, note that when all on rates are exactly diffusion limited,
+and in the absence energy consumption breaking detailed balance,
+the relative weights in the four state picture would be
+\begin{align}
+\begin{split}
+    p_E &\propto 1\\
+    p_R &\propto \rate{k}{R}{+}/\rate{k}{R}{-}\\
+    p_P &\propto \rate{k}{P}{+}/\rate{k}{P}{-}\\
+    p_R &\propto \omega \left(\rate{k}{P}{+}/\rate{k}{P}{-}\right)
+                        \left(\rate{k}{R}{+}/\rate{k}{R}{-}\right),
+\end{split}
+\label{eq:4state_eq_weights_rates}
+\end{align}
+where $\omega$ is a cooperativity factor.
+In other words, we exactly recover the equilibrium picture.
+The inclusion of transcription initiation and
+imperfectly diffusion-limited on rates will partially break this simple form,
+but it will remain approximately correct.
 
+The same argument leading to \eref{eq:4state_eq_weights_rates}
+applies in the three state model as well, but with $p_P$ removed
+and the normalization updated to $p_E + p_R + p_{RP}$.
+Note that $p_P < p_{RP}$ need not hold,
+merely $p_P \ll 1$, for the approximation to be good.
+But this is merely the weak promoter approximation,
+so we are not actually assuming anything new or strong.
+
+What our construction does \textit{not} guarantee is that the variance
+(and higher moments) of the mRNA distribution will be unaffected.
+We designed the effective rates so that the mean waiting time would be preserved.
+But the waiting time distribution in the coarse-grained three state model
+is exponential, as it must be for a memoryless Markov model.
+If the separation of timescales between XapR and RNAP rates is sufficiently strong,
+then the true two-step waiting time distribution will be approximately exponential.
+But in the limit where the rates are equal, it would become gamma distributed!
+This could impact the accuracy of predictions of Fano factor, variance,
+and any other properties of the mRNA distributions higher moments beyond the mean.
+How strong a timescale separation is sufficient will only become clear with numerics,
+as analytical results beyond the mean in the four state model are nigh impossible.
+\mmnote{Since Griffin's second round of experiments seem to confirm that
+no gene expression is detectable in the absence of XapR,
+I think these numerics are probably the top priority for theory now.
+If my intuition about surgically removing the RNAP bound state is wrong,
+we'll need a plan B soon to connect with the experiments.}
 
 \appendix
 
