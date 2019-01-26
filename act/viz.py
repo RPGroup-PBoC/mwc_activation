@@ -114,7 +114,6 @@ def format_axes(pub_style=False):
         sns.despine(offset=7)
 
 # Specialized viewing functions.
-
 def bokeh_traceplot(samples, varnames=None):
     """
     Generate a Bokey traceplot of a series of parameters and their sampling 

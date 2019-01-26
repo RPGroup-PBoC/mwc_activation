@@ -92,7 +92,7 @@ def fc_summary_microscopy(fc_data, alpha_samples, fname=None, constants=None,
     mean_auto = fc_data[fc_data['strain']=='auto']['mean_mCherry'].mean()
     hpd = compute_hpd(alpha_samples['alpha'], 0.95)
     int_mCherry = (fc_data['mean_mCherry'] - mean_auto) * fc_data['area_pix'] 
-    fc_data['repressors_min'] = int_mCherry / hpd[0]
+    fc_data['activators_min'] = int_mCherry / hpd[0]
     fc_data['repressors_max'] = int_mCherry / hpd[1]
     fc_data['repressors_median'] = int_mCherry / np.median(alpha_samples['alpha'])
 
@@ -103,20 +103,22 @@ def fc_summary_microscopy(fc_data, alpha_samples, fname=None, constants=None,
                                  n_sites=constants['n_sites'], effector_conc=0).fold_change()
 
     # Define the color palettes
-    mch_colors = {conc: color for conc, color in zip(np.sort(fc_data['atc_ngml'].unique()), bokeh.palettes.Reds9)}
-    yfp_colors = {conc: color for conc, color in zip(np.sort(fc_data['atc_ngml'].unique()), bokeh.palettes.Greens9)}
+    mch_colors = {conc: color for conc, color in
+        zip(np.sort(fc_data['atc_ngml'].unique()), bokeh.palettes.Reds9)}
+    yfp_colors = {conc: color for conc, color in
+        zip(np.sort(fc_data['atc_ngml'].unique()), bokeh.palettes.Greens9)}
 
     # Instantiate the figure canvases
     p1 = bokeh.plotting.figure(width=350, height=250, 
-                      x_axis_label='mean mCherry intensity [a.u. / pix]',
-                      y_axis_label='mean YFP intensity [a.u. / pix]', x_axis_type='log', y_axis_type='log')
+                 x_axis_label='mean mCherry intensity [a.u. / pix]',
+                 y_axis_label='mean YFP intensity [a.u. / pix]', x_axis_type='log', y_axis_type='log')
     p2 = bokeh.plotting.figure(width=350, height=250, 
-                      x_axis_label='mean mCherry intensity [a.u. / pix]',
-                      y_axis_label='ECDF', x_axis_type='log')
+                  x_axis_label='mean mCherry intensity [a.u. / pix]',
+                  y_axis_label='ECDF', x_axis_type='log')
     p3 = bokeh.plotting.figure(width=350, height=250, x_axis_label='ATC [ng / mL]',
-                          y_axis_label='rep. per cell')
+                  y_axis_label='act. per cell')
     p4 = bokeh.plotting.figure(width=350, height=250, x_axis_type='log', y_axis_type='log',
-                           x_axis_label='rep. per cell', y_axis_label='fold-change')
+                           x_axis_label='act. per cell', y_axis_label='fold-change')
 
     # Add title if desired
     if title != None:
