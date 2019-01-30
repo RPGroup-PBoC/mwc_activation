@@ -16,11 +16,11 @@ chosen to target the bimodal distribution observed at MBL 2018.
 ## Strains
 | **Location** | **Plasmid** | **Genotype** | **Shorthand** |
 |:--| :--| :--| :--| 
-|`Box 1-XX`| `N/A`| *xapABR::FRT-FRT* | `∆xap`|
-|`Box 1-XX`| `N/A`| *galK::28-YFP, xapABR::FRT-FRT* |`simp-YFP`|
-|`Box 1-XX`| `N/A`| *galK::27-YFP, xapABR::FRT-FRT* | `wt-YFP`|
-|`Box 1-XX`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::28-YFP, xapABR::FRT-FRT*| `simp-YFP + xapR`|
-|`Box 1-XX`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::27-YFP, xapABR::FRT-FRT*| `wt-YFP + xapR`|
+|`Box 1-17`| `N/A`| *xapABR::FRT-FRT* | `∆xap`|
+|`Box 1-24`| `N/A`| *galK::28-YFP, xapABR::FRT-FRT* |`simp-YFP`|
+|`Box 1-18`| `N/A`| *galK::27-YFP, xapABR::FRT-FRT* | `wt-YFP`|
+|`Box 1-28`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::28-YFP, xapABR::FRT-FRT*| `simp-YFP + xapR`|
+|`Box 1-27`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::27-YFP, xapABR::FRT-FRT*| `wt-YFP + xapR`|
 
 ## Inducer concentrations
 | **Inducer** | **Shorthand**| **Concentration(s)** |

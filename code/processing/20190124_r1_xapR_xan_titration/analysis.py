@@ -93,7 +93,7 @@ for g, d in dilution.groupby(['atc_ngml', 'xan_mgml', 'promoter']):
         
     # Plot the ECDF
     x, y = np.sort(d['mean_yfp']), np.arange(0, len(d), 1) / len(d)
-    _ax.step(x, y, lw=1, label=f'{g[1]} mg/mL')
+    _ax.plot(x, y, '.', ms=3, label=f'{g[1]} mg/mL')
 
 _leg = ax[0, 0].legend(title='[xanthosine]', fancybox=True, frameon=True)
 _leg.get_title().set_fontsize(8)
