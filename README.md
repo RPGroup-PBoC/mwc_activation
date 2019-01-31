@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/RPGroup-PBoC/mwc_activation.svg?branch=master)](https://travis-ci.org/RPGroup-PBoC/mwc_activation)
 # Quantitative Dissection of the Simple Activation Motif
 
 ## Overview
