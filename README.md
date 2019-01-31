@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/RPGroup-PBoC/mwc_activation.svg?branch=master)](https://travis-ci.org/RPGroup-PBoC/mwc_activation)
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"></a>.
+
 # Quantitative Dissection of the Simple Activation Motif
 
 ## Overview
@@ -50,7 +52,6 @@ All `.tex` and `.md` files used for write ups, summaries, and manuscripts.
 
 
 # License Information
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"></a>.
 All creative work is licensed under a [CC-BY
 4.0](http://creativecommons.org/licenses/by/4.0/) license which permits copying
 and redistribution in any medium or format as well as transformation, remixing,
