@@ -3,7 +3,6 @@ import pandas as pd
 import scipy.io
 import tqdm
 
-
 def clist_to_dataframe(clist_file, desired_props='default', added_props={},
                        excluded_props=None):
     """

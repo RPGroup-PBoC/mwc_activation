@@ -212,20 +212,6 @@ class StanModel(object):
         df['dimension'] = df['dimension'].astype(int) 
         return df 
 
-        
-    # Vizualization    
-    def traceplot(self, varnames=None):
-        """
-        Shows the sampling trace and distributions for desired varnames
-        See documentation for mwc.viz.bokeh_traceplot for more details.
-        """
-        return bokeh_traceplot(self.samples, varnames=varnames)
-
-    
-
-    
-    
-
 def loadStanModel(fname, force=False):
     """Loads a precompiled Stan model. If no compiled model is found, one will be saved."""
     # Identify the model name and directory structure

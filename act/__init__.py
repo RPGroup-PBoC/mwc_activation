@@ -9,7 +9,7 @@ from . import flow
 from . import image
 from . import stats
 from . import bayes
-from . import model
+from . import thermo
 from . import validation
 from . import process
 

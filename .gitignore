@@ -8,7 +8,7 @@ data/images/
 
 #Ignore trash dotfiles.
 *.DS_store
-
+*.vscode/
 #Ignore latex garbage.
 *.swp
 *.log

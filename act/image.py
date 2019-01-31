@@ -11,8 +11,6 @@ import pandas as pd
 import bokeh.io
 import tqdm
 
-
-
 def projection(im, mode='mean', median_filt=True):
     R"""
     Computes an average image from a provided array of images.
