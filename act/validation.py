@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 from .stats import compute_hpd, bin_by_events
-from .model import SimpleRepression
+from .thermo import SimpleRepression
 import bokeh.io
 import bokeh.plotting
 import bokeh.layouts

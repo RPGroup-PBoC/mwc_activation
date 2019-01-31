@@ -6,7 +6,7 @@ import skimage.segmentation
 import skimage.feature
 import scipy.ndimage
 import pandas as pd
-from mwc.image import projection, generate_flatfield, correct_drift
+from act.image import projection, generate_flatfield, correct_drift
 import pytest
 
 

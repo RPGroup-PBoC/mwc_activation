@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import sys
 sys.path.insert(0, '../')
-from mwc.io import scrape_frontmatter
+from act.io import scrape_frontmatter
 
 def test_scrape_frontmatter():
     accept_dict = {'status': 'accept', 'reason': 'test reason'}

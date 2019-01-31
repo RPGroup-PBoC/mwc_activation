@@ -363,7 +363,7 @@ class SimpleActivation(object):
     """
     Base class for the equilibrium model of the simple activation motif
     """
-        def __init__(self, A, ep_a, ep_int, n_ns=4.6e6, **kwargs):
+    def __init__(self, A, ep_a, ep_int, n_ns=4.6e6, **kwargs):
         R"""
         Instantiate the SimpleRepression object.
 
@@ -387,7 +387,7 @@ class SimpleActivation(object):
         # Define the variables.
         self.A = A
         self.ep_a = ep_a
-        self.ep_int  ep_int
+        self.ep_int = ep_int
         self.n_ns = n_ns
 
         # Ensure values make sense.
@@ -405,7 +405,7 @@ class SimpleActivation(object):
             self.mwc = MWC(**kwargs)
         else:
             self.allo = False
-def fold_change(self, pact=False):
+    def fold_change(self, pact=False):
         R"""
         fold - change for simple repression.
 
@@ -428,8 +428,8 @@ def fold_change(self, pact=False):
         # Compute repression and return inverse.
         numerator = 1 + pact * (self.A / self.n_ns) * np.exp(-self.ep_a +\
                         self.ep_int)
-        denomenator = 1  pact * (self.A / self.n_ns) * np.exp(-self.ep_a)
-        return numerator / denomenator
+        denominator = 1 + pact * (self.A / self.n_ns) * np.exp(-self.ep_a)
+        return numerator / denominator
 
     def saturation(self, wpa=True, num_pol=None, ep_pol=0):
         R"""
