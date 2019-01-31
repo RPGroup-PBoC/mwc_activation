@@ -3,7 +3,6 @@ import skimage.io
 import paramiko
 import frontmatter
 import pandas as pd
-import scp
 import yaml
 import os
 
