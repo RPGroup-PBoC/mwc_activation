@@ -51,3 +51,21 @@ joypy.joyplot(dists, column='FITC-H', by='xan_mgml', ax=ax, colormap=plt.cm.Reds
 # Write my own ridgeline plot generator
 n_conc = len(dists['xan_mgml'].unique())
 
+
+# Set the bins 
+bins = np.linspace(np.round(dists['FITC-H'].min()), np.round(dists['FITC-H'].max()), 100) 
+
+fig, ax = plt.subplots(n_conc, 1, figsize=(3, 6), sharex=True, sharey=True,)
+axes = {n:ax[i] for i, n in enumerate(np.sort(dists['xan_mgml'].unique()))}
+axes                        
+for g, d in dists.groupby(['xan_mgml']):
+    _ = axes[g].hist(d['FITC-H'], bins=bins, density=True)
+    _ = axes[g].set_yticks([])
+    _ = axes[g].set_ylabel(f'{g}')
+    
+ax[-1].set_xlabel('fluorescence [a.u.]')
+for a in ax:
+    a.set_xlim([0, 1E5])
+    
+plt.tight_layout()
+plt.savefig('output/ridgeline_plot.png', bbox_inches='tight')
