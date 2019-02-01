@@ -9,10 +9,10 @@ import joypy
 import glob
 colors = act.viz.personal_style()
 
-# Define the experimentl parameters. 
+# Define the experimental parameters. 
 DATE = '20190131'
-RUN_NO = 2
-promoter = '27yfp'
+RUN_NO = 1
+promoter = '28yfp'
 
 # Load the fold-change data
 fc_data = pd.read_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
@@ -46,3 +46,8 @@ plt.legend()
 
 fig, ax = plt.subplots(1, 1)
 joypy.joyplot(dists, column='FITC-H', by='xan_mgml', ax=ax, colormap=plt.cm.Reds)
+
+
+# Write my own ridgeline plot generator
+n_conc = len(dists['xan_mgml'].unique())
+
