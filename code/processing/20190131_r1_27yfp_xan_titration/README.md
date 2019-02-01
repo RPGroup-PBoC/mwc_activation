@@ -12,9 +12,9 @@ regulatory architecture with xapABR removed.
 ## Strains
 | **Location** | **Plasmid** | **Genotype** | **Shorthand** |
 |:--| :--| :--| :--| 
-|`Box 1-XX`| `N/A`| *xapABR::FRT-FRT* | `∆xap`|
-|`Box 1-XX`| `N/A`| *galK::27-YFP, xapABR::FRT-FRT* | `wt-YFP`|
-|`Box 1-XX`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::27-YFP, xapABR::FRT-FRT*| `wt-YFP + xapR`|
+|`Box 1-17`| `N/A`| *xapABR::FRT-FRT* | `∆xap`|
+|`Box 1-18`| `N/A`| *galK::27-YFP, xapABR::FRT-FRT* | `wt-YFP`|
+|`Box 1-27`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::27-YFP, xapABR::FRT-FRT*| `wt-YFP + xapR`|
 
 ## Inducer concentrations
 | **Inducer** | **Shorthand**| **Concentration(s)** |
