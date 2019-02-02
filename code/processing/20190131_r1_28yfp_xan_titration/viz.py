@@ -25,6 +25,10 @@ fig, ax = plt.subplots(1, 1)
 _fc = fc_data[fc_data['strain']=='dilution']
 _fc.sort_values(by=['xan_mgml'], inplace=True)
 ax.plot(_fc['xan_mgml'], _fc['fold_change'], '--o')
+ax.set_xlabel('xanthosine [mg/mL]')
+ax.set_ylabel('fold-change')
+plt.tight_layout()
+plt.savefig('output/foldchange.png')
 
 dfs = []
 for f in gated:
@@ -36,16 +40,7 @@ for f in gated:
     dfs.append(data)
 dists = pd.concat(dfs)
 
-fig, ax = plt.subplots(1, 1)
-for g, d in dists.groupby(['xan_mgml']):
-    ax.hist(d['FITC-H'], bins= 50, label=g, alpha=0.25)
-    print(g, np.var(d['FITC-H']) / np.mean(d['FITC-H']))
-    
-    
-plt.legend()
 
-fig, ax = plt.subplots(1, 1)
-joypy.joyplot(dists, column='FITC-H', by='xan_mgml', ax=ax, colormap=plt.cm.Reds)
 
 
 # Write my own ridgeline plot generator
@@ -55,7 +50,7 @@ n_conc = len(dists['xan_mgml'].unique())
 # Set the bins 
 bins = np.linspace(np.round(dists['FITC-H'].min()), np.round(dists['FITC-H'].max()), 100) 
 
-fig, ax = plt.subplots(n_conc, 1, figsize=(3, 6), sharex=True, sharey=True,)
+fig, ax = plt.subplots(n_conc, 1, figsize=(3, 6), sharex=True)
 axes = {n:ax[i] for i, n in enumerate(np.sort(dists['xan_mgml'].unique()))}
 axes                        
 for g, d in dists.groupby(['xan_mgml']):
@@ -66,6 +61,8 @@ for g, d in dists.groupby(['xan_mgml']):
 ax[-1].set_xlabel('fluorescence [a.u.]')
 for a in ax:
     a.set_xlim([0, 1E5])
-    
+
 plt.tight_layout()
-plt.savefig('output/ridgeline_plot.png', bbox_inches='tight')
+fig.text(-0.05, 0.55, 'xanthosine [mg/mL]', fontsize=9, rotation='vertical',
+        backgroundcolor='#f1f2f6')
+plt.savefig('output/distributions.png', bbox_inches='tight')

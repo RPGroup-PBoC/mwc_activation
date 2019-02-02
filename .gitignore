@@ -5,6 +5,7 @@
 
 # Ignore specific folders. 
 data/images/
+data/flow/
 
 #Ignore trash dotfiles.
 *.DS_store
