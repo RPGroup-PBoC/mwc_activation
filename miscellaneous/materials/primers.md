@@ -28,4 +28,18 @@
 |`GC_ACT_024` |  `TCGTATAATGTGTGGgaattcattaaagaggagaaaggtaccg` | `pZS29.2_vec_FWD` | Forward primer with homology to lacUV5 promoter |
 |`GC_ACT_025` | `AAAAGTGTATTTttttaccgtggattaatagagaaaagatataaatc` | `pZS29.3_FWD` | Insertion of proximal site to distal |
 |`GC_ACT_026`| `tgaattcccacacattatagcgaggttgt` | `pZS29.3_vec_REV`| Insertion of proximal site to distal |
-|`GC_ACT_027
+|`ssGC_ACT_027` | `gctattgaatgcgtgagaaaagtgtattttttacaagagccgggacaacctcg` | `pZS28.2_promoter_FWD` | Complete promoter with shifted (0) proximal binding site|
+|`ssGC_ACT_028` | `cgaggttgtcccggctcttgtaaaaaatacacttttctcacgcattcaatagc` | `pZS28.2_promoter_REV` | Complete promoter with shifted (0) proximal binding site|
+|`GC_ACT_029`| `cgcattcaatagcgattcgatatc` |  `pZS28.2_vec_REV` | Reverse primer for shifting proximal binding site |
+| `ssGC_ACT_030`| `ctattgaatgcgtgagaaaagtgtattttcgagtttacaagagccgggacaacc` | `pZS28.3_promoter_FWD` | Complete promoter with -5 shifted proximal binding site |
+| `ssGC_ACT_031`| `ggttgtcccggctcttgtaaactcgaaaatacacttttctcacgcattcaatag` | `pZS28.3_promoter_REV` | Complete promoter with -5 shifted proximal binding site |
+| `ssGC_ACT_032`| `cgctattgaatgcgtgagaaaagtgtattttcgagtcgagtttacaagagccgggacaac`| `pZS28.4_promoter_FWD`| Complete promoter with -10 shifted proximal binding site|
+| `ssGC_ACT_033`| `gttgtcccggctcttgtaaactcgactcgaaaatacacttttctcacgcattcaatagcg`| `pZS28.4_promoter_REV`| Complete promoter with -10 shifted proximal binding site|
+|`ssGC_ACT_034`| `taaaagtgtatttagagaaaagatataaatccatcgatatcgaatcgctattgaatgcgtgagtttacaaga` | `pZS28.5_promoter_FWD`| Promoter with -50 shifted proximal binding site and UV5 -35|
+| `ssGC_ACT_035` | `tcttgtaaactcacgcattcaatagcgattcgatatcgatggatttatatcttttctctaaatacactttta`| `pZS28.5_promoter_REV` | Promoter with -50 shifted proximal binding site and UV5 -35|
+| `GC_ACT_036`| `TGAATGCGTGAGTTTACAagagccgggacaacc`| `pZS28.5_vec_FWD` | overlap is with `ssGC_ACT_034`| 
+| `GC_ACT_037`| `TCTCTAAATACACTTTTAttaatccacctcgaggtg` | `pZS28.5_vec_REV`| overlap is with `GC_ACT_034`|
+| `ssGC_ACT_038`| `aaaagtgtattgttttaccgtggattaatagagaaaagatataaatccatcgatatcgaatcgctattgaatgcgtgagtcgccaatacagt`| `pZS27.1_promoter_FWD` | Complete promoter with swapped binding sites|
+| `ssGC_ACT_039`| `actgtattggcgactcacgcattcaatagcgattcgatatcgatggatttatatcttttctctattaatccacggtaaaacaatacactttt` | `pZS27.1_promoter_REV`| Complete promoter with swapped binding sites|
+| `GC_ACT_040`| `GTGAGTCGCCAATACAGTgtaagagccgggacaac`| `pZS27.1_vec_FWD`| overlap w/ `ssGC_ACT_038`| 
+| `GC_ACT_041` |`GTAAAACAATACACTTTTtattaattcctctcgaggtgaagac`| `pZS27.1_vec_REV` | overlap w/ `ssGC_ACT_038`|
