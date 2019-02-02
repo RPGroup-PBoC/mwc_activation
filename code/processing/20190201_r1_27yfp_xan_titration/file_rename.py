@@ -5,10 +5,10 @@ import os
 import glob
 
 # Define the details fo the expriment.
-DATE = ''
-atc_conc =  # in ng/mL
-RUN_NO = 
-promoter = ''
+DATE = '20190201'
+atc_conc =  10# in ng/mL
+RUN_NO = 2
+promoter = '27yfp'
 
 ## Hardcoded arrangement garbage. 
 xan_mgml = [0, 0, 0, 0.1, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 10]

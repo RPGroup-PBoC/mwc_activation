@@ -9,8 +9,8 @@ import act.flow
 import tqdm
 
 # Define the experiment parameters
-DATE = ''
-RUN_NO = 
+DATE = '20190201'
+RUN_NO = 2
 gating_fraction = 0.4
 
 # Make sure the outputfiles exist. 
