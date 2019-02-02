@@ -12,7 +12,7 @@ promoter = '27yfp'
 
 ## Hardcoded arrangement garbage. 
 xan_mgml = [0, 0, 0, 0.1, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 10]
-_strains =  ['auto', 'delta', ['dilution'] * len(xan_mgml)]
+_strains =  [['auto'], ['delta'], ['dilution'] * len(xan_mgml)]
 strains =  [l[i] for l in _strains for i in range(len(l))]
 
 # Define directories and search pattern

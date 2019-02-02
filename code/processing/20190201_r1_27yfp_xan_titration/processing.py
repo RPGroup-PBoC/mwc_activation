@@ -52,3 +52,6 @@ df['fold_change'] = (df['mean_FITC']) / mean_delta
 # Save to a CSV.
 df.to_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
 print('finished!')
+
+
+df.groupby(['xan_mgml', 'strain']).count()

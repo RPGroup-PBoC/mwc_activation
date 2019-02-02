@@ -10,9 +10,9 @@ import glob
 colors = act.viz.personal_style()
 
 # Define the experimental parameters. 
-DATE = ''
-RUN_NO = 
-promoter = ''
+DATE = '20190201'
+RUN_NO = 2 
+promoter = '27yfp'
 
 # Load the fold-change data
 fc_data = pd.read_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
@@ -40,9 +40,6 @@ for f in gated:
     dfs.append(data)
 dists = pd.concat(dfs)
 
-
-
-
 # Write my own ridgeline plot generator
 n_conc = len(dists['xan_mgml'].unique())
 
@@ -69,23 +66,23 @@ plt.savefig('output/distributions.png', bbox_inches='tight')
 
 
 
-# Generate microscopy datasets. 
-data = pd.read_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_microscopy.csv')
-_data = data[data['strain']=='dilution']
+# # Generate microscopy datasets. 
+# data = pd.read_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_microscopy.csv')
+# _data = data[data['strain']=='dilution']
 
-fig, ax = plt.subplots(n_conc, 1, figsize=(3, 6), sharex=True)
-axes = {n:ax[i] for i, n in enumerate(np.sort(_data['xan_mgml'].unique()))}
-axes                        
-for g, d in _data.groupby(['xan_mgml']):
-    _ = axes[g].hist(d['mean_yfp'], bins=bins, density=True)
-    _ = axes[g].set_yticks([])
-    _ = axes[g].set_ylabel(f'{g}')
+# fig, ax = plt.subplots(n_conc, 1, figsize=(3, 6), sharex=True)
+# axes = {n:ax[i] for i, n in enumerate(np.sort(_data['xan_mgml'].unique()))}
+# axes                        
+# for g, d in _data.groupby(['xan_mgml']):
+#     _ = axes[g].hist(d['mean_yfp'], bins=bins, density=True)
+#     _ = axes[g].set_yticks([])
+#     _ = axes[g].set_ylabel(f'{g}')
     
-ax[-1].set_xlabel('fluorescence [a.u. / pix]')
-# for a in ax:
-#     a.set_xlim([0, 1E5])
+# ax[-1].set_xlabel('fluorescence [a.u. / pix]')
+# # for a in ax:
+# #     a.set_xlim([0, 1E5])
 
-plt.tight_layout()
-fig.text(-0.05, 0.55, 'xanthosine [mg/mL]', fontsize=9, rotation='vertical',
-        backgroundcolor='#f1f2f6')
-plt.savefig('output/microscopy_distributions.png', bbox_inches='tight')
+# plt.tight_layout()
+# fig.text(-0.05, 0.55, 'xanthosine [mg/mL]', fontsize=9, rotation='vertical',
+#         backgroundcolor='#f1f2f6')
+# plt.savefig('output/microscopy_distributions.png', bbox_inches='tight')
