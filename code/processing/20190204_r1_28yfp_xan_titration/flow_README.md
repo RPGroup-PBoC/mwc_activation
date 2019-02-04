@@ -3,28 +3,37 @@ status: rejected
 reason: Experiment not yet completed
 ---
 
-# **YYYY-MM-DD** Promoter Screening 
+# 2019-02-04 Xanthosine Titration Curve
 
 ## Purpose 
-
+A xanthosine titration curve with the simple activation promoter with low
+concentrations of xanthosine. 
 ## Strains
 | **Location** | **Plasmid** | **Genotype** | **Shorthand** |
 |:--| :--| :--| :--| 
 |`Box 1-XX`| `N/A`| *xapABR::FRT-FRT* | `∆xap`|
 |`Box 1-XX`| `N/A`| *galK::28-YFP, xapABR::FRT-FRT* |`simp-YFP`|
-|`Box 1-XX`| `N/A`| *galK::27-YFP, xapABR::FRT-FRT* | `wt-YFP`|
-|`Box 1-XX`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::28-YFP, xapABR::FRT-FRT*| `simp-YFP + xapR`|
-|`Box 1-XX`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::27-YFP, xapABR::FRT-FRT*| `wt-YFP + xapR`|
+|`Box 1-28`| *pN25-tetR*| *ybcN::1-xapR-mCherry, galK::28-YFP, xapABR::FRT-FRT*| `simp-YFP + xapR`|
+
 
 ## Inducer concentrations
 | **Inducer** | **Shorthand**| **Concentration(s)** |
 |:--|:--| :--|
-| Anhydrous tetracycline| ATC| **XX, XX** \[ng/mL\]|
-| Xanthosine dihydrate | XAN | **XX, XX** \[mg/mL\]|
+| Anhydrous tetracycline| ATC|  10 \[ng/mL\]|
+| Xanthosine dihydrate | XAN | 0, 0.05, 0.1, 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 3.5, 4\[mg/mL\]|
 
 ## Notes & Observations
-
+* Concentrations were prepared via a serial dilution from the highest
+  concentration (4 mg/mL).  This may explain fluctuations in concentration.
+* Because the highest concentration was not 100% soluble, the final
+  concentration is questionable. 
 ## Processing Files
+
+**Distribution evolution**
+![](output/distributions.png)
+
+**Fold-change** 
+![](./output/foldchange.png)
 
 ### Cell Husbandry
 1. All strains given in the table above were grown in LB + appropriate
