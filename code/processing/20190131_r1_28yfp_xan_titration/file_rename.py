@@ -1,3 +1,4 @@
+#%% 
 import numpy as np
 import fcsparser
 import os
@@ -10,12 +11,13 @@ RUN_NO = 1
 promoter = '28yfp'
 gating_fraction = 0.4
 
-# Define the xanthosine concentrations in mg/mL for each tube
-xan_mgml = [0, 0, 0, 0.1, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 10]
-
-# Do fancy flattening of lists
-_strains = [['auto'], ['delta'], ['dilution'] * int(len(xan_mgml) - 2)]
-strains = [n for _ in _strains for n in _]
+## Hardcoded arrangement garbage. 
+xan_mgml = [0, 2, 8, 0, 3, 10, 0, 4, 0.1, 5, 0.5, 6, 1, 7]
+strains = ['auto', 'dilution', 'dilution',
+          'delta', 'dilution', 'dilution',
+          'dilution', 'dilution', 'dilution',
+          'dilution', 'dilution', 'dilution',
+          'dilution', 'dilution']
 
 # Define directories and search pattern
 src = '../../../data/flow/fcs/'
@@ -25,7 +27,7 @@ pattern = f'RP{DATE[:4]}-{DATE[4:6]}-{DATE[6:]}_r{RUN_NO}'
 # Get the names of the files.
 files = np.sort(glob.glob(f'{src}{pattern}*.fcs'))
 
-# Iterate through each strain and concentration. 
+# %%Iterate through each strain and concentration. 
 for s, c, f in zip(strains, xan_mgml, files):
     # Define the new name. 
     new_name = f'{DATE}_r{RUN_NO}_{promoter}_{s}_{atc_conc}ngmlATC_{c}mgmlXAN'
