@@ -64,11 +64,13 @@ for g, d in data[data['strain']=='dilution'].groupby(['xan_mgml']):
                 linestyle='none', fmt='.', ms=5, color='firebrick')
 
 for a in ax:
+    a.set_xscale('log')
+    a.set_yscale('log')
     a.set_xlabel('activators / cell (approx)')
     a.set_ylabel('fold-change')
     a.vlines(5, 0, a.get_ylim()[1], lw=1, color='dodgerblue')
 ax[0].set_title('0 mg/mL xanthosine', backgroundcolor='#f1f2f6')
-ax[1].set_title('0 mg/mL xanthosine', backgroundcolor='#f1f2f6')
+ax[1].set_title('4 mg/mL xanthosine', backgroundcolor='#f1f2f6')
 plt.tight_layout()
 plt.savefig(f'output/{DATE}_titration_series.png', bbox_inches='tight')
 
