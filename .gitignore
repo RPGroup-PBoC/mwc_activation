@@ -23,7 +23,6 @@ data/flow/
 #Ignore images
 *.jpg
 *.tif*
-*.png
 *.eps
 *.svg
 *.bmp
