@@ -10,8 +10,8 @@ This is the list of current strains used in this work.
 | Box 1-4| | *xapABR<>kd4-FRT:Kan:FRT*| HG104 | chromosomal deletion of *xapABR* w/ Kan. cassette|
 | Box 1-5| |*xapABR<>kd4-FRT:Kan:FRT*| HG104 | Box 1-4 duplicate |
 | Box 1-6| |*xapABR<>kd4-FRT:Kan:FRT*| HG104 | Box 1-4 duplicate |
-| Box 1-7| pUA66xap-GFP | DH5α | Sort-Seq plasmid - single bp mutant upstream of promoter |
-| Box 1-8| pUA66-xapGFP ccdB window 1 | DB3.1| Sort Seq plasmid *ccdB* insertion to window|
+| Box 1-7| pUA66xap-GFP | | DH5α | Sort-Seq plasmid - single bp mutant upstream of promoter |
+| Box 1-8| pUA66-xapGFP ccdB window 1 | | DB3.1| Sort Seq plasmid *ccdB* insertion to window|
 | Box 1-9| |*xapABR<>kd4-FRT:Kan:FRT*| MG1655 | Transduction of Box 1-4 into wt *E. coli|
 | Box 1-10| | *galK<>27xap-YFP*| MG1655 | Chromosomal integration of wt-promoter drriven YFP |
 | Box 1-11| pUA66xap-GFP\*1 | |MG1655 | Sort Seq plasmid with window 1 mutations (aliquot 1) |
@@ -32,7 +32,13 @@ This is the list of current strains used in this work.
 | Box 1-26| pN25-tetR | *ybcN<>1-xapR-mCherry xapABR<>kd4-FRT::FRT* | MG1655 | Dilution circuit  in ∆xapABR|
 | Box 1-27| pN25-tetR | *galK<>27-YFP, ybcN<>1-xapR-mCherry xapABR<>kd4-FRT::FRT*| MG1655 | Dilution circuit with wild-type promoter driven YFP |
 | Box 1-28 | pN25-tetR | *galK<>28-YFP, ybcN<>1-xapR-mCherry, xapABR<>kd4-FRT::FRT*| MG1655 | Dilution circuit with simple promoter driven YFP |
-
+| Box 1-29 | pUA-GFP\*1 | *ybcN<>3\*1-xapR-mCherry, xapABR<>kd4-FRT::FRT*`| MG1655 | Sort-Seq Window 1 Aliquot 1 |
+| Box 1-30 | pUA-GFP\*1 | *ybcN<>3\*1-xapR-mCherry, xapABR<>kd4-FRT::FRT*`| MG1655 | Sort-Seq Window 1 Aliquot 2 |
+| Box 1-31 | pUA-GFP\*1 | *ybcN<>3\*1-xapR-mCherry, xapABR<>kd4-FRT::FRT*`| MG1655 | Sort-Seq Window 1 Aliquot 3 |
+| Box 1-32 | pUA-GFP\*2 | *ybcN<>3\*1-xapR-mCherry, xapABR<>kd4-FRT::FRT*`| MG1655 | Sort-Seq Window 2 Aliquot 1 |
+| Box 1-33 | pUA-GFP\*2 | *ybcN<>3\*1-xapR-mCherry, xapABR<>kd4-FRT::FRT*`| MG1655 | Sort-Seq Window 2 Aliquot 2 |
+| Box 1-34 | pUA-GFP\*2 | *ybcN<>3\*1-xapR-mCherry, xapABR<>kd4-FRT::FRT*`| MG1655 | Sort-Seq Window 2 Aliquot 3 |
+| Box 1-35 | pZS28.1-YFP | | TOP10 | Simple promoter architecture w/ UV5 -10 sequence |
 
 
 
