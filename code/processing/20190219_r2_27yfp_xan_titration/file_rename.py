@@ -5,14 +5,14 @@ import os
 import glob
 
 # Define the details fo the expriment.
-DATE = '20190213'
+DATE = '20190219'
 atc_conc = 10 # in ng/mL
-RUN_NO = 1
+RUN_NO = 2
 promoter = '27yfp'
 gating_fraction = 0.4
 
 ## Hardcoded arrangement garbage. 
-xan_mgml = (0, 0, 0, 0.05, 0.1, 0.25, 0.5, 0.75, 1.0, 1.5, 2.0, 2.5, 3.5, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0)
+xan_mgml = (0, 0.5, 1.0, 1.5, 2.0, 2.5, 3, 3.5, 4, 5, 6, 8, 10, 15, 20)
 _strains = [['auto'], ['delta'], ['dilution'] * 18] 
 strains = [l[i] for l in _strains for i in range(len(l))]
 

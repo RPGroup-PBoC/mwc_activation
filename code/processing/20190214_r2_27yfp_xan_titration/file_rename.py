@@ -5,9 +5,9 @@ import os
 import glob
 
 # Define the details fo the expriment.
-DATE = '20190213'
+DATE = '20190214'
 atc_conc = 10 # in ng/mL
-RUN_NO = 1
+RUN_NO = 2
 promoter = '27yfp'
 gating_fraction = 0.4
 
