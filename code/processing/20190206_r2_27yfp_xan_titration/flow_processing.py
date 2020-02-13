@@ -38,18 +38,18 @@ for f in tqdm.tqdm(files, desc='processing flow cytometry files...'):
     # Save the gated data. 
     gated_bool.to_csv(f, index=False)
     
-    # Compute the mean
-    mean_FITC = gated['FITC-H'].mean()
+#     # Compute the mean
+#     mean_FITC = gated['FITC-H'].mean()
 
-    # Assemble the dictionary
-    samp_dict = dict(date=DATE, promoter=promoter, strain=strain,
-                     atc_ngml=atc, xan_mgml=xan, mean_FITC=mean_FITC)
-    df = df.append(samp_dict, ignore_index=True)
+#     # Assemble the dictionary
+#     samp_dict = dict(date=DATE, promoter=promoter, strain=strain,
+#                      atc_ngml=atc, xan_mgml=xan, mean_FITC=mean_FITC)
+#     df = df.append(samp_dict, ignore_index=True)
 
-mean_auto = np.mean(df[df['strain']=='auto']['mean_FITC'])
-mean_delta = np.mean(df[df['strain']=='delta']['mean_FITC']) #- mean_auto
-df['fold_change'] = (df['mean_FITC']) / mean_delta #(df['mean_FITC'] - mean_auto) / mean_delta
+# mean_auto = np.mean(df[df['strain']=='auto']['mean_FITC'])
+# mean_delta = np.mean(df[df['strain']=='delta']['mean_FITC']) #- mean_auto
+# df['fold_change'] = (df['mean_FITC']) / mean_delta #(df['mean_FITC'] - mean_auto) / mean_delta
 
-# Save to a CSV.
-df.to_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
+# # Save to a CSV.
+# df.to_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
 print('finished!')

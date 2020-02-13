@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pandas as pd
 import pickle
-import pystan
+# import pystan
 import pandas as pd
 import scipy.special
 import scipy.optimize

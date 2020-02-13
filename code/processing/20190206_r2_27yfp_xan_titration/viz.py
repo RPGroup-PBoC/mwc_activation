@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import act.viz
-import joypy
+# import joypy
 import glob
 colors = act.viz.personal_style()
 
@@ -14,21 +14,21 @@ DATE = '20190206'
 RUN_NO = 2
 promoter = '27yfp'
 
-# Load the fold-change data
-fc_data = pd.read_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
+# # Load the fold-change data
+# fc_data = pd.read_csv(f'output/{DATE}_r{RUN_NO}_{promoter}_fold_change.csv')
 
 # Define the list of all flow files.
 gated = glob.glob(f'../../../data/flow/csv/{DATE}_r{RUN_NO}_{promoter}_dilution*.csv')
 
-# Plot the mean fold-change. 
-fig, ax = plt.subplots(1, 1)
-_fc = fc_data[fc_data['strain']=='dilution']
-_fc.sort_values(by=['xan_mgml'], inplace=True)
-ax.plot(_fc['xan_mgml'], _fc['fold_change'], '--o')
-ax.set_xlabel('xanthosine [mg/mL]')
-ax.set_ylabel('fold-change')
-plt.tight_layout()
-plt.savefig('output/foldchange.png')
+# # Plot the mean fold-change. 
+# fig, ax = plt.subplots(1, 1)
+# _fc = fc_data[fc_data['strain']=='dilution']
+# _fc.sort_values(by=['xan_mgml'], inplace=True)
+# ax.plot(_fc['xan_mgml'], _fc['fold_change'], '--o')
+# ax.set_xlabel('xanthosine [mg/mL]')
+# ax.set_ylabel('fold-change')
+# plt.tight_layout()
+# plt.savefig('output/foldchange.png')
 
 dfs = []
 for f in gated:
